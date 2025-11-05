@@ -57,12 +57,11 @@ class Student implements Comparable<Student> {
 
 class ExecuteAndSort {
 
-    public static <E extends Comparable> List<E> execute(List<E> elements, Function<E, E> function) {
-        return (List<E>) elements
-                .stream()
-                .map(function::apply)
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+    public static <E extends Comparable<E>> List<E> execute(List<E> elements, Function<E, E> function) {
+        return elements.stream()
+                       .map(function)
+                       .sorted(Comparator.reverseOrder())
+                       .collect(Collectors.toList());
     }
 }
 
