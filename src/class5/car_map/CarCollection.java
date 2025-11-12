@@ -1,4 +1,4 @@
-package class4.car_advanced;
+package class5.car_map;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -49,5 +49,17 @@ public class CarCollection {
                    .filter(car -> car.getManufacturer().equalsIgnoreCase(manufacturer))
                    .sorted(new CarModelComparator())
                    .collect(Collectors.toList());
+    }
+
+    public Map<String, List<Car>> groupByManufacturer() {
+        Map<String, List<Car>> map = new HashMap<>();
+        for (Car car : cars) {
+            map.computeIfAbsent(car.getManufacturer(), k -> new ArrayList<>()).add(car);
+        }
+        return map;
+    }
+
+    public Map<String, List<Car>> groupByManufacturerAdvanced() {
+        return cars.stream().collect(Collectors.groupingBy(Car::getManufacturer, Collectors.toList()));
     }
 }
