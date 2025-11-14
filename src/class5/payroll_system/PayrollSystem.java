@@ -28,16 +28,22 @@ public class PayrollSystem {
     }
 
     Map<String, Set<Employee>> printEmployeesByLevels(OutputStream os, Set<String> levels) {
-        Map<String, Set<Employee>> grouped = employees.stream()
-                                                      .collect(Collectors.groupingBy(
-                                                              Employee::getLevel,
-                                                              (Supplier<TreeMap<String, Set<Employee>>>) TreeMap::new,
-                                                              Collectors.toCollection(TreeSet::new)
-                                                      ));
+        Map<String, Set<Employee>> employeesByLevel = new HashMap<>();
+
+        for (Employee employee : employees) {
+            employeesByLevel.computeIfAbsent(employee.getLevel(), k -> new HashSet<>()).add(employee);
+        }
+
+//        Map<String, Set<Employee>> grouped = employees.stream()
+//                                                      .collect(Collectors.groupingBy(
+//                                                              Employee::getLevel,
+//                                                              (Supplier<TreeMap<String, Set<Employee>>>) TreeMap::new,
+//                                                              Collectors.toCollection(TreeSet::new)
+//                                                      ));
 
         Map<String, Set<Employee>> result = new HashMap<>();
         for (String lvl : levels) {
-            Set<Employee> set = grouped.get(lvl);
+            Set<Employee> set = employeesByLevel.get(lvl);
             if (set != null) {
                 result.put(lvl, set);
             }
