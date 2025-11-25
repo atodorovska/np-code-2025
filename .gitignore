@@ -4,6 +4,10 @@
 out/
 target/
 
+
+src/office_hours
+src/midterms
+
 ### Eclipse ###
 .apt_generated
 .classpath
