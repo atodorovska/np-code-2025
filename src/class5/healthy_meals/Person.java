@@ -44,6 +44,10 @@ public class Person implements Comparable<Person> {
         return this;
     }
 
+    public int countHealthyMeals2(List<String> healthyMeals) {
+        return (int) meals.stream().filter(healthyMeals::contains).distinct().count();
+    }
+
     @Override
     public String toString() {
         return String.format("Person ID: %d (healthy meals: %d)", id, count);
@@ -51,9 +55,6 @@ public class Person implements Comparable<Person> {
 
     @Override
     public int compareTo(Person other) {
-        return Comparator.comparing(Person::getCount)
-                         .reversed()
-                         .thenComparing(Person::getId)
-                         .compare(this, other);
+        return Comparator.comparing(Person::getCount).reversed().thenComparing(Person::getId).compare(this, other);
     }
 }

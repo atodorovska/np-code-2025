@@ -1,8 +1,6 @@
 package class4.book_basic_and_advanced;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 class BookTitleAndPriceComparator implements Comparator<Book> {
@@ -76,4 +74,5 @@ public class BookCollection {
                     .limit(n)
                     .collect(Collectors.toList());
     }
+
 }

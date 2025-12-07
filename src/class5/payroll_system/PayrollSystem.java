@@ -54,7 +54,7 @@ public class PayrollSystem {
     Map<String, Double> totalPayPerEmployee() {
         Map<String, Double> totals = new HashMap<>();
         for (Employee e : employees) {
-            if (totals.containsKey(e.getID())) {
+            if (!totals.containsKey(e.getID())) {
                 totals.putIfAbsent(e.getID(), e.calculateSalary());
             } else {
                 double currentValue = totals.get(e.getID());
@@ -70,7 +70,7 @@ public class PayrollSystem {
 //                     ));
 
 
-//            totals.merge(e.getID(), e.calculateSalary(), Double::sum);
+            totals.merge(e.getID(), e.calculateSalary(), Double::sum);
         }
         return totals;
     }

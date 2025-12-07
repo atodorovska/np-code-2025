@@ -23,6 +23,7 @@ public class HealthyMeals {
                             .thenComparing(Person::getId))
           .forEach(pw::println);
 
+        pw.flush();
     }
 
     public void evaluate2(InputStream is, OutputStream os) throws IOException {
@@ -34,6 +35,22 @@ public class HealthyMeals {
           .map(Person::create)
           .map(p -> p.countHealthyMeals(healthyMeals))
           .sorted().forEach(pw::println);
+
+        pw.flush();
+    }
+
+    public void evaluate3(InputStream is, OutputStream os) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        PrintWriter pw = new PrintWriter(os);
+        healthyMeals = Arrays.stream(br.readLine().split("\\s+")).toList();
+
+        br.lines()
+          .map(Person::create)
+          .sorted(Comparator.comparing((Person p) -> p.countHealthyMeals(healthyMeals))
+                            .thenComparing(Person::getId))
+          .forEach(p -> {
+              pw.printf("Person ID: %d (healthy meals: %d)", p.getId(), p.countHealthyMeals2(healthyMeals));
+          });
 
         pw.flush();
     }
