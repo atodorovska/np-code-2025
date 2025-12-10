@@ -1,0 +1,179 @@
+2025-01-12 10:00:00 [Auth] WARN Potential issue detected
+2025-01-12 10:00:00.050000 [API] INFO Operation completed
+2025-01-12 10:00:00.100000 [Worker] DEBUG Debug value X
+2025-01-12 10:00:00.150000 [Cache] INFO Operation completed
+2025-01-12 10:00:00.200000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:00.250000 [DB] INFO Operation completed
+2025-01-12 10:00:00.300000 [Auth] INFO Operation completed
+2025-01-12 10:00:00.350000 [API] INFO Operation completed
+2025-01-12 10:00:00.400000 [Cache] DEBUG Debug value X
+2025-01-12 10:00:00.450000 [Scheduler] DEBUG Debug value X
+2025-01-12 10:00:00.500000 [Scheduler] WARN Potential issue detected
+2025-01-12 10:00:00.550000 [Auth] INFO Operation completed
+2025-01-12 10:00:00.600000 [Scheduler] ERROR Operation failed
+2025-01-12 10:00:00.650000 [Auth] INFO Operation completed
+2025-01-12 10:00:00.700000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:00.750000 [API] DEBUG Debug value X
+2025-01-12 10:00:00.800000 [API] INFO Operation completed
+2025-01-12 10:00:00.850000 [Scheduler] WARN Potential issue detected
+2025-01-12 10:00:00.900000 [DB] INFO Operation completed
+2025-01-12 10:00:00.950000 [Scheduler] DEBUG Debug value X
+2025-01-12 10:00:01 [DB] INFO Operation completed
+2025-01-12 10:00:01.050000 [Cache] DEBUG Debug value X
+2025-01-12 10:00:01.100000 [Cache] INFO Operation completed
+2025-01-12 10:00:01.150000 [DB] INFO Operation completed
+2025-01-12 10:00:01.200000 [Worker] INFO Operation completed
+2025-01-12 10:00:01.250000 [Cache] INFO Operation completed
+2025-01-12 10:00:01.300000 [Auth] INFO Operation completed
+2025-01-12 10:00:01.350000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:01.400000 [Cache] INFO Operation completed
+2025-01-12 10:00:01.450000 [Cache] INFO Operation completed
+2025-01-12 10:00:01.500000 [DB] WARN Potential issue detected
+2025-01-12 10:00:01.550000 [Auth] DEBUG Debug value X
+2025-01-12 10:00:01.600000 [Worker] WARN Potential issue detected
+2025-01-12 10:00:01.650000 [Worker] INFO Operation completed
+2025-01-12 10:00:01.700000 [Worker] DEBUG Debug value X
+2025-01-12 10:00:01.750000 [Cache] INFO Operation completed
+2025-01-12 10:00:01.800000 [DB] INFO Operation completed
+2025-01-12 10:00:01.850000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:01.900000 [API] INFO Operation completed
+2025-01-12 10:00:01.950000 [Scheduler] DEBUG Debug value X
+2025-01-12 10:00:02 [API] WARN Potential issue detected
+2025-01-12 10:00:02.050000 [DB] DEBUG Debug value X
+2025-01-12 10:00:02.100000 [Auth] INFO Operation completed
+2025-01-12 10:00:02.150000 [Auth] WARN Potential issue detected
+2025-01-12 10:00:02.200000 [Worker] WARN Potential issue detected
+2025-01-12 10:00:02.250000 [DB] INFO Operation completed
+2025-01-12 10:00:02.300000 [API] WARN Potential issue detected
+2025-01-12 10:00:02.350000 [Auth] INFO Operation completed
+2025-01-12 10:00:02.400000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:02.450000 [Cache] INFO Operation completed
+2025-01-12 10:00:02.500000 [API] WARN Potential issue detected
+2025-01-12 10:00:02.550000 [Auth] WARN Potential issue detected
+2025-01-12 10:00:02.600000 [Auth] INFO Operation completed
+2025-01-12 10:00:02.650000 [API] INFO Operation completed
+2025-01-12 10:00:02.700000 [Cache] INFO Operation completed
+2025-01-12 10:00:02.750000 [Worker] ERROR Operation failed
+2025-01-12 10:00:02.800000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:02.850000 [Worker] INFO Operation completed
+2025-01-12 10:00:02.900000 [API] INFO Operation completed
+2025-01-12 10:00:02.950000 [Scheduler] DEBUG Debug value X
+2025-01-12 10:00:03 [Auth] WARN Potential issue detected
+2025-01-12 10:00:03.050000 [API] INFO Operation completed
+2025-01-12 10:00:03.100000 [API] INFO Operation completed
+2025-01-12 10:00:03.150000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:03.200000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:03.250000 [DB] INFO Operation completed
+2025-01-12 10:00:03.300000 [API] INFO Operation completed
+2025-01-12 10:00:03.350000 [Scheduler] WARN Potential issue detected
+2025-01-12 10:00:03.400000 [API] INFO Operation completed
+2025-01-12 10:00:03.450000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:03.500000 [DB] INFO Operation completed
+2025-01-12 10:00:03.550000 [Auth] INFO Operation completed
+2025-01-12 10:00:03.600000 [Cache] INFO Operation completed
+2025-01-12 10:00:03.650000 [Auth] DEBUG Debug value X
+2025-01-12 10:00:03.700000 [Scheduler] WARN Potential issue detected
+2025-01-12 10:00:03.750000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:03.800000 [Auth] INFO Operation completed
+2025-01-12 10:00:03.850000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:03.900000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:03.950000 [API] INFO Operation completed
+2025-01-12 10:00:04 [Scheduler] INFO Operation completed
+2025-01-12 10:00:04.050000 [Worker] INFO Operation completed
+2025-01-12 10:00:04.100000 [Scheduler] DEBUG Debug value X
+2025-01-12 10:00:04.150000 [DB] DEBUG Debug value X
+2025-01-12 10:00:04.200000 [Scheduler] DEBUG Debug value X
+2025-01-12 10:00:04.250000 [API] INFO Operation completed
+2025-01-12 10:00:04.300000 [Scheduler] ERROR Operation failed
+2025-01-12 10:00:04.350000 [DB] INFO Operation completed
+2025-01-12 10:00:04.400000 [Worker] INFO Operation completed
+2025-01-12 10:00:04.450000 [Worker] INFO Operation completed
+2025-01-12 10:00:04.500000 [Auth] DEBUG Debug value X
+2025-01-12 10:00:04.550000 [DB] INFO Operation completed
+2025-01-12 10:00:04.600000 [Scheduler] DEBUG Debug value X
+2025-01-12 10:00:04.650000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:04.700000 [Auth] INFO Operation completed
+2025-01-12 10:00:04.750000 [DB] INFO Operation completed
+2025-01-12 10:00:04.800000 [API] INFO Operation completed
+2025-01-12 10:00:04.850000 [Worker] INFO Operation completed
+2025-01-12 10:00:04.900000 [Auth] WARN Potential issue detected
+2025-01-12 10:00:04.950000 [Cache] WARN Potential issue detected
+2025-01-12 10:00:05 [Worker] INFO Operation completed
+2025-01-12 10:00:05.050000 [Worker] INFO Operation completed
+2025-01-12 10:00:05.100000 [Auth] WARN Potential issue detected
+2025-01-12 10:00:05.150000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:05.200000 [Cache] INFO Operation completed
+2025-01-12 10:00:05.250000 [DB] INFO Operation completed
+2025-01-12 10:00:05.300000 [API] INFO Operation completed
+2025-01-12 10:00:05.350000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:05.400000 [API] WARN Potential issue detected
+2025-01-12 10:00:05.450000 [API] WARN Potential issue detected
+2025-01-12 10:00:05.500000 [Cache] INFO Operation completed
+2025-01-12 10:00:05.550000 [API] INFO Operation completed
+2025-01-12 10:00:05.600000 [API] DEBUG Debug value X
+2025-01-12 10:00:05.650000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:05.700000 [Cache] WARN Potential issue detected
+2025-01-12 10:00:05.750000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:05.800000 [Cache] INFO Operation completed
+2025-01-12 10:00:05.850000 [DB] INFO Operation completed
+2025-01-12 10:00:05.900000 [DB] WARN Potential issue detected
+2025-01-12 10:00:05.950000 [Auth] WARN Potential issue detected
+2025-01-12 10:00:06 [Worker] INFO Operation completed
+2025-01-12 10:00:06.050000 [Cache] DEBUG Debug value X
+2025-01-12 10:00:06.100000 [Auth] WARN Potential issue detected
+2025-01-12 10:00:06.150000 [Cache] WARN Potential issue detected
+2025-01-12 10:00:06.200000 [API] DEBUG Debug value X
+2025-01-12 10:00:06.250000 [Worker] INFO Operation completed
+2025-01-12 10:00:06.300000 [Cache] INFO Operation completed
+2025-01-12 10:00:06.350000 [Cache] INFO Operation completed
+2025-01-12 10:00:06.400000 [DB] INFO Operation completed
+2025-01-12 10:00:06.450000 [Worker] INFO Operation completed
+2025-01-12 10:00:06.500000 [API] WARN Potential issue detected
+2025-01-12 10:00:06.550000 [Worker] INFO Operation completed
+2025-01-12 10:00:06.600000 [Auth] INFO Operation completed
+2025-01-12 10:00:06.650000 [Auth] INFO Operation completed
+2025-01-12 10:00:06.700000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:06.750000 [Cache] INFO Operation completed
+2025-01-12 10:00:06.800000 [API] INFO Operation completed
+2025-01-12 10:00:06.850000 [Worker] INFO Operation completed
+2025-01-12 10:00:06.900000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:06.950000 [Cache] INFO Operation completed
+2025-01-12 10:00:07 [Scheduler] INFO Operation completed
+2025-01-12 10:00:07.050000 [Worker] DEBUG Debug value X
+2025-01-12 10:00:07.100000 [Auth] INFO Operation completed
+2025-01-12 10:00:07.150000 [Worker] INFO Operation completed
+2025-01-12 10:00:07.200000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:07.250000 [Cache] WARN Potential issue detected
+2025-01-12 10:00:07.300000 [Auth] INFO Operation completed
+2025-01-12 10:00:07.350000 [Worker] INFO Operation completed
+2025-01-12 10:00:07.400000 [DB] WARN Potential issue detected
+2025-01-12 10:00:07.450000 [Cache] WARN Potential issue detected
+2025-01-12 10:00:07.500000 [Worker] INFO Operation completed
+2025-01-12 10:00:07.550000 [DB] INFO Operation completed
+2025-01-12 10:00:07.600000 [Worker] INFO Operation completed
+2025-01-12 10:00:07.650000 [Cache] INFO Operation completed
+2025-01-12 10:00:07.700000 [API] INFO Operation completed
+2025-01-12 10:00:07.750000 [Cache] INFO Operation completed
+2025-01-12 10:00:07.800000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:07.850000 [API] INFO Operation completed
+2025-01-12 10:00:07.900000 [API] INFO Operation completed
+2025-01-12 10:00:07.950000 [Worker] DEBUG Debug value X
+2025-01-12 10:00:08 [Worker] INFO Operation completed
+2025-01-12 10:00:08.050000 [DB] DEBUG Debug value X
+2025-01-12 10:00:08.100000 [DB] INFO Operation completed
+2025-01-12 10:00:08.150000 [Cache] DEBUG Debug value X
+2025-01-12 10:00:08.200000 [Worker] INFO Operation completed
+2025-01-12 10:00:08.250000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:08.300000 [Scheduler] WARN Potential issue detected
+2025-01-12 10:00:08.350000 [Scheduler] WARN Potential issue detected
+2025-01-12 10:00:08.400000 [Worker] INFO Operation completed
+2025-01-12 10:00:08.450000 [Cache] WARN Potential issue detected
+2025-01-12 10:00:08.500000 [Scheduler] INFO Operation completed
+2025-01-12 10:00:08.550000 [API] INFO Operation completed
+2025-01-12 10:00:08.600000 [API] WARN Potential issue detected
+2025-01-12 10:00:08.650000 [Auth] INFO Operation completed
+2025-01-12 10:00:08.700000 [DB] INFO Operation completed
+2025-01-12 10:00:08.750000 [Cache] INFO Operation completed
+2025-01-12 10:00:08.800000 [Worker] DEBUG Debug value X
+2025-01-12 10:00:08.850000 [DB] INFO Operation completed
+2025-01-12 10:00:08.900000 [Worker] WARN Potential issue detected
