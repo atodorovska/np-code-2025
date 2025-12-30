@@ -1,9 +1,9 @@
 package class9;
 
-import com.sun.source.tree.Tree;
-
 import java.util.*;
+import java.util.Scanner;
 import java.util.stream.Collectors;
+
 
 interface Subscriber {
     void updateVotes(int unit, String pollId, String party, int votes, int totalVotersPerPoll, int totalVotersPerUnit);
@@ -13,94 +13,152 @@ interface Subscriber {
 
 class VotersTurnoutApp implements Subscriber {
 
-    Map<Integer, Integer> castedVotesPerUnit = new TreeMap<>();
-    Map<Integer, Integer> totalVotersPerUnitMap = new TreeMap<>();
+    Map<Integer, Integer> castedVotesPerUnit = new HashMap<>();
+    Map<Integer, Integer> totalVotersPerUnitMap = new HashMap<>();
 
     @Override
     public void updateVotes(int unit, String pollId, String party, int votes, int totalVotersPerPoll, int totalVotersPerUnit) {
+        //1 100
+        //1 200
+        //1 300
 
-        totalVotersPerUnitMap.putIfAbsent(unit, totalVotersPerUnit);
+        //1 600
 
         castedVotesPerUnit.putIfAbsent(unit, 0);
         castedVotesPerUnit.put(unit, castedVotesPerUnit.get(unit) + votes);
 
+        totalVotersPerUnitMap.putIfAbsent(unit, totalVotersPerUnit);
     }
 
     @Override
     public void printStatistics() {
-        System.out.println(String.format("%10s %7s %7s %9s", "Unit:", "Casted:", "Voters:", "Turnout:"));
+        //Unit: Casted: Voters: Turnout:
+        //    1     800    5000  16.00%
 
-        for (Integer unit : castedVotesPerUnit.keySet()) {
-            double turnout = (100.0 * castedVotesPerUnit.get(unit)) / totalVotersPerUnitMap.get(unit);
-            System.out.println(String.format("%10d %7d %7d %7.2f%%", unit, castedVotesPerUnit.get(unit), totalVotersPerUnitMap.get(unit), turnout));
+        System.out.println("Unit: Casted: Voters: Turnout:");
+        for (int unit = 1; unit <= 6; unit++) {
+            if (castedVotesPerUnit.containsKey(unit)) {
+                System.out.println(
+                        String.format(
+                                "%5d %7d %7d %7.2f%%",
+                                unit,
+                                castedVotesPerUnit.get(unit),
+                                totalVotersPerUnitMap.get(unit),
+                                100.0 * castedVotesPerUnit.get(unit) / totalVotersPerUnitMap.get(unit)
+                        ));
+            }
         }
 
+    }
+}
+
+
+class ElectionUnitSeatDistribution {
+    int unit;
+    Map<String, Integer> votesPerParty = new HashMap<>();
+    int totalVotes = 0;
+
+    public ElectionUnitSeatDistribution(int unit) {
+        this.unit = unit;
+    }
+
+    public void addVotes(String party, int votes) {
+        votesPerParty.putIfAbsent(party, 0);
+        votesPerParty.put(party, votesPerParty.get(party) + votes);
+
+        totalVotes += votes;
+    }
+
+    public Map<String, Integer> distributeSeats() {
+        int votesPerSeat = totalVotes / 20;
+        int seatsAssigned = 0;
+
+        Map<String, Integer> distribution = new HashMap<>();
+
+        for (Map.Entry<String, Integer> entry : votesPerParty.entrySet()) {
+            String party = entry.getKey();
+            Integer votes = entry.getValue();
+            int seats = votes / votesPerSeat;
+            seatsAssigned+=seats;
+            distribution.put(party, seats);
+        }
+
+        if (seatsAssigned < 20) {
+            String winnerParty = votesPerParty.entrySet()
+                    .stream()
+                    .max(Comparator.comparingInt(Map.Entry::getValue))
+                    .get().getKey();
+
+            int notAllocatedSeats = 20 - seatsAssigned;
+            distribution.put(winnerParty, distribution.get(winnerParty) + notAllocatedSeats);
+        }
+
+        return distribution;
+
+    }
+
+    public String getStatistics() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Party      Votes   %Votes Seats   %Seats\n");
+        Map<String, Integer> distribution = distributeSeats();
+        for (Map.Entry<String, Integer> partyVotes : votesPerParty.entrySet()) {
+            String party = partyVotes.getKey();
+            Integer votes = partyVotes.getValue();
+            sb.append(String.format(
+                    "%10s %5d %7.2f%% %5d %7.2f%%",
+                    party,
+                    votes,
+                    100.0*votes/totalVotes,
+                    distribution.get(party),
+                    100.0*distribution.get(party)/20.0
+            )).append("\n");
+        }
+        return sb.toString();
     }
 }
 
 class SeatsApp implements Subscriber {
 
-    Map<String, Integer> votesPerParty = new TreeMap<>();
-    int castedVotes = 0;
+    Map<Integer, ElectionUnitSeatDistribution> distribution = new TreeMap<>();
 
     @Override
     public void updateVotes(int unit, String pollId, String party, int votes, int totalVotersPerPoll, int totalVotersPerUnit) {
-        votesPerParty.putIfAbsent(party, 0);
-        votesPerParty.put(party, votesPerParty.get(party) + votes);
-
-        castedVotes+=votes;
+        distribution.putIfAbsent(unit, new ElectionUnitSeatDistribution(unit));
+        distribution.get(unit).addVotes(party, votes);
     }
 
     @Override
     public void printStatistics() {
-
-        int votesPerSeat = castedVotes / 20;
-
-        Map<String, Integer> seatsPerParty = new TreeMap<>();
-
-        votesPerParty.forEach((party, votes) -> {
-            seatsPerParty.put(party, votes/votesPerSeat);
-        });
-
-        int seatsAllocated = seatsPerParty.values().stream().mapToInt(s -> s).sum();
-
-        int seatNotAllocated = 20 - seatsAllocated;
-
-        if (seatNotAllocated>0){
-            String winnerParty = votesPerParty.entrySet().stream().max(Comparator.comparing(Map.Entry::getValue)).get().getKey();
-            seatsPerParty.put(winnerParty, seatsPerParty.get(winnerParty) + seatNotAllocated);
+        for (ElectionUnitSeatDistribution unit : distribution.values()) {
+            System.out.println(unit.getStatistics());
         }
-
-        System.out.println("Party      Votes   %Votes Seats   %Seats");
-
-        for (String party : seatsPerParty.keySet()) {
-            System.out.println(String.format(
-                    "%10s %5d %7.2f%% %5d %7.2f%%",
-                    party,
-                    votesPerParty.get(party),
-                    (100.0 * votesPerParty.get(party)) / castedVotes,
-                    seatsPerParty.get(party),
-                    (100.0 * seatsPerParty.get(party)) / 20
-                    ));
-        }
-
 
     }
 }
 
-
-class ElectionUnit {
+class ElectionUnit { //Publisher
 
     int unit;
     Map<String, Integer> votersByPoll;
-    int totalVotersPerUnit;
     List<Subscriber> subscribers;
 
     ElectionUnit(int unit, Map<String, Integer> votersByPoll) {
         this.unit = unit;
         this.votersByPoll = votersByPoll;
-        this.totalVotersPerUnit = votersByPoll.values().stream().mapToInt(Integer::intValue).sum();
         subscribers = new ArrayList<>();
+    }
+
+    void addVotes(String pollId, String party, int votes) {
+        for (Subscriber subscriber : subscribers) {
+            subscriber.updateVotes(
+                    this.unit,
+                    pollId,
+                    party,
+                    votes,
+                    this.votersByPoll.get(pollId),
+                    this.votersByPoll.values().stream().mapToInt(Integer::intValue).sum()
+            );
+        }
     }
 
     void subscribe(Subscriber subscriber) {
@@ -110,13 +168,6 @@ class ElectionUnit {
     void unsubscribe(Subscriber subscriber) {
         subscribers.remove(subscriber);
     }
-
-
-    void addVotes(String pollId, String party, int votes) {
-        for (Subscriber subscriber : subscribers) {
-            subscriber.updateVotes(unit, pollId, party, votes, votersByPoll.get(pollId), totalVotersPerUnit);
-        }
-    }
 }
 
 class InvalidVotesException extends Exception {
@@ -124,6 +175,7 @@ class InvalidVotesException extends Exception {
         super(message);
     }
 }
+
 
 class VotesController {
 
@@ -137,19 +189,20 @@ class VotesController {
         units = new HashMap<>();
     }
 
-    void addElectionUnit(ElectionUnit electionUnit) {
+    public void addElectionUnit(ElectionUnit electionUnit) {
         units.put(electionUnit.unit, electionUnit);
     }
 
-    void addVotes(String pollId, String party, int votes) throws InvalidVotesException {
+    public void addVotes(String pollId, String party, int votes) throws InvalidVotesException {
         if (!parties.contains(party)) {
-            //100 invalid votes were cast for option X at poll 123
-            throw new InvalidVotesException(String.format("Party %s is not registered on this election.", party));
+            throw new InvalidVotesException(String.format("Party %s is not registed for these elections.", party));
         }
 
-        this.units.get(this.unitPerPoll.get(pollId)).addVotes(pollId, party, votes);
+        int unit = unitPerPoll.get(pollId);
+        units.get(unit).addVotes(pollId, party, votes);
     }
 }
+
 
 public class ElectionAppTest {
     public static void main(String[] args) {

@@ -1,85 +1,88 @@
 package class9;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
-interface Subscriber {
-    void update(float temperature, float humidity, float pressure);
+interface WeatherSubscriber {
+    void update (float temperature, float humidity, float pressure);
+    void display();
 }
 
-interface Publisher {
-    void register (Subscriber subscriber);
-    void remove (Subscriber subscriber);
-    void notifySubscriber (float temperature, float humidity, float pressure);
-}
+class CurrentConditionsDisplay implements WeatherSubscriber {
 
-class WeatherDispatcher implements Publisher {
+    private float temperature;
+    private float humidity;
 
-    Set<Subscriber> subscribers;
-
-    WeatherDispatcher() {
-        subscribers = new HashSet<>();
+    public CurrentConditionsDisplay(WeatherDispatcher weatherDispatcher) {
+        weatherDispatcher.register(this);
     }
 
     @Override
-    public void register(Subscriber subscriber) {
+    public void update(float temperature, float humidity, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+
+        display();
+    }
+
+    @Override
+    public void display() {
+        System.out.println(String.format("Temperature: %.1fF\nHumidity: %.1f%%",  temperature, humidity));
+    }
+}
+
+class ForecastDisplay implements WeatherSubscriber {
+
+    float previousPressure;
+    float currentPressure;
+
+    public ForecastDisplay(WeatherDispatcher weatherDispatcher) {
+        weatherDispatcher.register(this);
+    }
+
+    @Override
+    public void update(float temperature, float humidity, float pressure) {
+        previousPressure = currentPressure;
+        currentPressure = pressure;
+
+        display();
+    }
+
+    @Override
+    public void display() {
+        System.out.print("Forecast: ");
+        if (currentPressure == previousPressure){
+            System.out.println("Same");
+        } else if (currentPressure > previousPressure){
+            System.out.println("Improving");
+        } else {
+            System.out.println("Cooler");
+        }
+    }
+}
+
+
+
+class WeatherDispatcher {
+    Set<WeatherSubscriber> subscribers = new HashSet<WeatherSubscriber>();
+
+    public void setMeasurements(float temperature, float humidity, float pressure) {
+        for (WeatherSubscriber subscriber : subscribers) {
+            subscriber.update(temperature, humidity, pressure);
+        }
+
+
+    }
+
+    public void register(WeatherSubscriber subscriber) {
         subscribers.add(subscriber);
     }
 
-    @Override
-    public void remove(Subscriber subscriber) {
+    public void remove(WeatherSubscriber subscriber) {
         subscribers.remove(subscriber);
     }
-
-    @Override
-    public void notifySubscriber(float temperature, float humidity, float pressure) {
-        for (Subscriber subscriber : subscribers) {
-            subscriber.update(temperature, humidity, pressure);
-        }
-    }
-
-    public void setMeasurements(float temperature, float humidity, float pressure) {
-        notifySubscriber(temperature, humidity, pressure);
-        System.out.println();
-    }
 }
-
-class CurrentConditionsDisplay implements Subscriber {
-
-    CurrentConditionsDisplay(Publisher publisher) {
-        publisher.register(this);
-    }
-
-    @Override
-    public void update(float temperature, float humidity, float pressure) {
-        System.out.println(String.format("Temperature: %.1fF\nHumidity: %.1f%%", temperature, humidity));
-    }
-}
-
-class ForecastDisplay implements Subscriber {
-
-    float previousPressure;
-
-    public ForecastDisplay(Publisher publisher) {
-        previousPressure = 0;
-        publisher.register(this);
-    }
-
-
-
-    @Override
-    public void update(float temperature, float humidity, float pressure) {
-        if (pressure > previousPressure) {
-            System.out.println("Forecast: Improving");
-        } else if (pressure == previousPressure) {
-            System.out.println("Forecast: Same");
-        } else { //pressure<previousPressure
-            System.out.println("Forecast: Cooler");
-        }
-
-        previousPressure = pressure;
-    }
-}
-
 
 public class WeatherApplication {
 
